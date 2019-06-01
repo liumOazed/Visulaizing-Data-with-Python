@@ -1,0 +1,37 @@
+# let's quickly view the 2013 data
+df_can['2013'].head()
+count, bin_edges = np.histogram(df_can['2013'])
+
+print(count) # frequency count
+# 'bin_edges' is a list of bin intervals
+count, bin_edges = np.histogram(df_can['2013'])
+
+df_can['2013'].plot(kind='hist', figsize=(8, 5), xticks=bin_edges)
+
+plt.title('Histogram of Immigration from 195 countries in 2013') # add a title to the histogram
+plt.ylabel('Number of Countries') # add y-label
+plt.xlabel('Number of Immigrants') # add x-label
+
+plt.show()
+# let's quickly view the dataset of Denmark... 
+df_can.loc[['Denmark', 'Norway', 'Sweden'], years]
+# transpose dataframe
+df_t = df_can.loc[['Denmark', 'Norway', 'Sweden'], years].transpose()
+df_t.head()
+# let's get the x-tick values
+count, bin_edges = np.histogram(df_t, 15)
+
+# un-stacked histogram
+df_t.plot(kind ='hist', 
+          figsize=(10, 6),
+          bins=15,
+          alpha=0.6,
+          xticks=bin_edges,
+          color=['coral', 'darkslateblue', 'mediumseagreen']
+         )
+
+plt.title('Histogram of Immigration from Denmark, Norway, and Sweden from 1980 - 2013')
+plt.ylabel('Number of Years')
+plt.xlabel('Number of Immigrants')
+
+plt.show()
