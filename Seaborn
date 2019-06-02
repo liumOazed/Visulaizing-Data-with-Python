@@ -1,0 +1,62 @@
+# install seaborn
+!conda install -c anaconda seaborn --yes
+
+# import library
+import seaborn as sns
+
+print('Seaborn installed and imported!')
+# we can use the sum() method to get the total population per year
+df_tot = pd.DataFrame(df_can[years].sum(axis=0))
+
+# change the years to type float (useful for regression later on)
+df_tot.index = map(float, df_tot.index)
+
+# reset the index to put in back in as a column in the df_tot dataframe
+df_tot.reset_index(inplace=True)
+
+# rename columns
+df_tot.columns = ['year', 'total']
+
+# view the final dataframe
+df_tot.head()
+import seaborn as sns
+ax = sns.regplot(x='year', y='total', data=df_tot)
+import seaborn as sns
+ax = sns.regplot(x='year', y='total', data=df_tot, color='green')
+import seaborn as sns
+ax = sns.regplot(x='year', y='total', data=df_tot, color='green', marker='+')
+#Increasing size of the graph
+plt.figure(figsize=(15, 10))
+ax = sns.regplot(x='year', y='total', data=df_tot, color='green', marker='+')
+#Increasing size of the marker
+plt.figure(figsize=(15, 10))
+ax = sns.regplot(x='year', y='total', data=df_tot, color='green', marker='+', scatter_kws={'s': 200})
+
+ax.set(xlabel='Year', ylabel='Total Immigration') # add x- and y-labels
+ax.set_title('Total Immigration to Canada from 1980 - 2013') # add title
+#Increasing Font Size
+plt.figure(figsize=(15, 10))
+
+sns.set(font_scale=1.5)
+
+ax = sns.regplot(x='year', y='total', data=df_tot, color='green', marker='+', scatter_kws={'s': 200})
+ax.set(xlabel='Year', ylabel='Total Immigration')
+ax.set_title('Total Immigration to Canada from 1980 - 2013')
+#Changing Background
+plt.figure(figsize=(15, 10))
+
+sns.set(font_scale=1.5)
+sns.set_style('ticks') # change background to white background
+
+ax = sns.regplot(x='year', y='total', data=df_tot, color='green', marker='+', scatter_kws={'s': 200})
+ax.set(xlabel='Year', ylabel='Total Immigration')
+ax.set_title('Total Immigration to Canada from 1980 - 2013')
+#Gridline Backgrounds
+plt.figure(figsize=(15, 10))
+
+sns.set(font_scale=1.5)
+sns.set_style('whitegrid')
+
+ax = sns.regplot(x='year', y='total', data=df_tot, color='green', marker='+', scatter_kws={'s': 200})
+ax.set(xlabel='Year', ylabel='Total Immigration')
+ax.set_title('Total Immigration to Canada from 1980 - 2013')
